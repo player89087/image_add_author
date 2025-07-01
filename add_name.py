@@ -2,9 +2,8 @@ from PIL import Image, ImageDraw, ImageFont, ExifTags
 import os , glob
 
 # pip install pillow 
-# exif data (exchangeable image file fomrat) standart for saving metadata 
+
 directory = r"C:\Users\sven-\Desktop\coding_projects\photo_stuff\photo"
-directory_no_exif = r"C:\Users\sven-\Desktop\coding_projects\photo_stuff\photo\no_exif"
 
 my_files = glob.glob(os.path.join(directory,"*.JPG")) # list of all jpg files
 
@@ -37,7 +36,7 @@ for index,file_path in enumerate(my_files):
         size_text = x_width / 92.307692307
         I1 = ImageDraw.Draw(img) # call method to add 2d to pic
         font = ImageFont.truetype("arial.ttf",size_text)
-        I1.text((place_x,place_y),"© Sven Künne", font=font, fill=(color))
+        I1.text((place_x,place_y),"© author", font=font, fill=(color))
         img.save(f"edited_photo_{str(index + 1).zfill(2)}.JPG")
 
         print(x_width)
