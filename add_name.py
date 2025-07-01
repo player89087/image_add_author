@@ -21,18 +21,22 @@ for index,file_path in enumerate(my_files):
         x_width, y_width = image.size
         place_y = (y_width // 100)
         place_x = (x_width // 2) - 50
+        brightness_sum = 0
         
-        pixelRGB = img.getpixel((place_x, place_y))
-        brightness = int(sum(pixelRGB)**(1/3))
+        for i in range(0,100):
+            pixelRGB = img.getpixel((place_x + i, place_y))
+            brightness_sum += int(sum(pixelRGB)**(1/3))
+        
+        brightness = brightness_sum // 100
         print(brightness)
         color = 0
         if brightness <= 6: 
             color = 255, 255, 255
         elif brightness >= 7:
             color = 0, 0, 0
-        
+        size_text = x_width / 92.307692307
         I1 = ImageDraw.Draw(img) # call method to add 2d to pic
-        font = ImageFont.truetype("arial.ttf",65)
+        font = ImageFont.truetype("arial.ttf",size_text)
         I1.text((place_x,place_y),"© Sven Künne", font=font, fill=(color))
         img.save(f"edited_photo_{str(index + 1).zfill(2)}.JPG")
 
