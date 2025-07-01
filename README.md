@@ -1,0 +1,1 @@
+This project is about automatically adding some text (e.g copyright with your name) to a bunch of photos. Therefore the script first of all names all of the files in a chronological way. Then the script puts some text the image, the color of the text depends on the brightness of the background. 
